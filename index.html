@@ -6,30 +6,37 @@
 <style>
 body {
   margin: 0;
-  text-align: center;
-  font-family: Arial;
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  font-family: Arial, sans-serif;
+  background: url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
   color: white;
 }
 
-.container {
-  margin-top: 80px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  border: none;
-  background: white;
-  color: #ff4d6d;
-  border-radius: 20px;
-  cursor: pointer;
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  min-height: 100vh;
+  text-align: center;
+  padding-top: 80px;
 }
 
 input {
   padding: 10px;
   border-radius: 10px;
   border: none;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff1e4d;
 }
 
 #mainContent {
@@ -46,14 +53,15 @@ input {
   color: #ff4d6d;
   padding: 30px;
   border-radius: 20px;
-  width: 300px;
+  width: 320px;
+  box-shadow: 0 0 20px black;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="overlay">
 
 <h1>Enter Secret Password 💖</h1>
 
@@ -63,23 +71,28 @@ input {
 
 <div id="mainContent">
 
-<h1>Happy Birthday My Life ❤️</h1>
+<h1>Happy Birthday YOUR_WIFE_NAME ❤️</h1>
 
-<p>You are my world, my strength, and my forever happiness.</p>
+<p style="font-size:20px;">
+You are my world, my strength, and my forever happiness.
+Every day with you is a blessing.
+</p>
 
 <button onclick="openLetter()">Read My Secret Love Letter 💌</button>
+
+</div>
 
 <div class="popup" id="letter">
 <h2>My Love 💕</h2>
 <p>
 From the day you came into my life,
 everything became beautiful.
-You are my biggest blessing.
+You are my biggest blessing and my forever happiness.
+I promise to stand beside you in every situation.
 Happy Birthday my queen ❤️
 </p>
+<br>
 <button onclick="closeLetter()">Close</button>
-</div>
-
 </div>
 
 </div>
@@ -90,7 +103,7 @@ function checkPassword() {
   if(password === "Sara1527") {
     document.getElementById("mainContent").style.display = "block";
   } else {
-    alert("Wrong Password 💔");
+    alert("Wrong Password 💔 Try Again!");
   }
 }
 

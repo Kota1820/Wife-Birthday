@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Happy Birthday ❤️</title>
 
 <style>
@@ -49,17 +50,29 @@ button {
   padding: 30px;
   border-radius: 20px;
   width: 320px;
+  z-index: 1000;
 }
 
 /* Floating Hearts */
 .heart {
   position: fixed;
-  color: pink;
   animation: float 6s linear infinite;
+  font-size: 25px;
 }
 @keyframes float {
-  0% { transform: translateY(100vh); }
-  100% { transform: translateY(-10vh); }
+  0% { transform: translateY(100vh); opacity:1; }
+  100% { transform: translateY(-10vh); opacity:0; }
+}
+
+/* Fireworks */
+.firework {
+  position: fixed;
+  font-size: 30px;
+  animation: explode 1s ease-out forwards;
+}
+@keyframes explode {
+  from { opacity:1; transform: scale(0); }
+  to { opacity:0; transform: scale(3); }
 }
 
 /* Photo Slider */
@@ -87,9 +100,9 @@ button {
 
 <p style="font-size:20px;">
 You are my world, my strength, and my forever happiness.
-Every day with you is a blessing.
+Every day with you is a blessing 😍.
 </p>
-  
+
 <div class="slider">
   <img id="slide" src="photo1.jpg">
 </div>
@@ -113,29 +126,44 @@ Happy Birthday my queen ❤️
 
 </div>
 
-<audio autoplay loop>
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
   <source src="birthday.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Password
+
+// PASSWORD + MUSIC START
 function checkPassword() {
   if(document.getElementById("pass").value === "Sara1527") {
     document.getElementById("mainContent").style.display = "block";
+    
+    // Start Music
+    var music = document.getElementById("bgMusic");
+    music.play().catch(e=>console.log(e));
+
+    // Start Hearts
+    startHearts();
   } else {
     alert("Wrong Password 💔 Try Again");
   }
 }
 
-// Love Letter
+// LOVE LETTER
 function openLetter(){ document.getElementById("letter").style.display="block"; }
 function closeLetter(){ document.getElementById("letter").style.display="none"; }
 
-// Countdown (Set Correct Year)
+// COUNTDOWN
 var countDate = new Date("Feb 27, 2026 00:00:00").getTime();
 setInterval(function(){
   var now = new Date().getTime();
   var gap = countDate - now;
+
+  if(gap < 0){
+    document.getElementById("countdown").innerHTML="Happy Birthday Deepu ❤️";
+    launchFireworks();
+    return;
+  }
 
   var d = Math.floor(gap / (1000*60*60*24));
   var h = Math.floor((gap%(1000*60*60*24))/(1000*60*60));
@@ -147,25 +175,39 @@ setInterval(function(){
 
 },1000);
 
-// Photo Slider
+// PHOTO SLIDER
 var images = ["photo1.jpg","photo2.jpg","photo3.jpg"];
 var i=0;
 setInterval(function(){
-  i++;
-  if(i>=images.length) i=0;
-  document.getElementById("slide").src=images[i];
+  i = (i+1)%images.length;
+  document.getElementById("slide").src = images[i];
 },3000);
 
-// Floating Hearts Generator
-setInterval(function(){
-  var heart=document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="💖";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=(Math.random()*20+20)+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),6000);
-},500);
+// HEARTS START FUNCTION
+function startHearts(){
+  setInterval(function(){
+    var heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  },500);
+}
+
+// FIREWORKS
+function launchFireworks(){
+  for(let i=0;i<20;i++){
+    let fw=document.createElement("div");
+    fw.className="firework";
+    fw.innerHTML="✨";
+    fw.style.left=Math.random()*100+"vw";
+    fw.style.top=Math.random()*100+"vh";
+    document.body.appendChild(fw);
+    setTimeout(()=>fw.remove(),1000);
+  }
+}
+
 </script>
 
 </body>

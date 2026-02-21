@@ -5,81 +5,92 @@
 <title>Happy Birthday ❤️</title>
 
 <style>
-body {
-  margin: 0;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
   font-family: Arial, sans-serif;
-  background: url("background.jpg") no-repeat center center fixed;
-  background-size: cover;
-  overflow-x: hidden;
-  color: white;
+  background:url("background.jpg") no-repeat center center fixed;
+  background-size:cover;
+  overflow-x:hidden;
+  color:white;
 }
 
-.overlay {
-  background: rgba(0,0,0,0.6);
-  min-height: 100vh;
-  text-align: center;
-  padding-top: 60px;
+.overlay{
+  background:rgba(0,0,0,0.55);
+  min-height:100vh;
+  text-align:center;
+  padding-top:80px;
 }
 
-input {
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
+input{
+  padding:10px;
+  border-radius:8px;
+  border:none;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  border: none;
-  background: #ff4d6d;
-  color: white;
-  border-radius: 25px;
-  cursor: pointer;
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+  margin-top:15px;
 }
 
-#mainContent { display: none; }
-
-.popup {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  color: #ff4d6d;
-  padding: 30px;
-  border-radius: 20px;
-  width: 320px;
-  z-index: 1000;
+button:hover{
+  background:#ff1e4d;
 }
 
-/* Floating Hearts */
-.heart {
-  position: fixed;
-  animation: float 6s linear infinite;
-  font-size: 25px;
+#mainContent{display:none;margin-top:20px;}
+
+#countdown{
+  font-size:22px;
+  margin:15px;
 }
-@keyframes float {
-  0% { transform: translateY(100vh); opacity:1; }
-  100% { transform: translateY(-10vh); opacity:0; }
+
+.slider img{
+  width:260px;
+  border-radius:15px;
+  margin-top:15px;
+}
+
+.popup{
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  color:#ff0066;
+  padding:25px;
+  border-radius:15px;
+  width:280px;
+  z-index:2000;
+}
+
+/* Hearts */
+.heart{
+  position:fixed;
+  font-size:24px;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh);opacity:1;}
+  100%{transform:translateY(-10vh);opacity:0;}
 }
 
 /* Fireworks */
-.firework {
-  position: fixed;
-  font-size: 30px;
-  animation: explode 1s ease-out forwards;
-}
-@keyframes explode {
-  from { opacity:1; transform: scale(0); }
-  to { opacity:0; transform: scale(3); }
+.firework{
+  position:fixed;
+  font-size:30px;
+  animation:explode 1s ease-out forwards;
 }
 
-/* Photo Slider */
-.slider img {
-  width: 300px;
-  border-radius: 15px;
-  margin-top: 20px;
+@keyframes explode{
+  from{opacity:1;transform:scale(0);}
+  to{opacity:0;transform:scale(3);}
 }
 </style>
 </head>
@@ -88,8 +99,8 @@ button {
 
 <div class="overlay">
 
-<h1>Enter Secret Password 💖</h1>
-<input type="password" id="pass"><br><br>
+<h2>Enter Secret Password 💖</h2>
+<input type="password" id="pass"><br>
 <button onclick="checkPassword()">Open My Heart ❤️</button>
 
 <div id="mainContent">
@@ -104,108 +115,114 @@ Every day with you is a blessing 😍.
 </p>
 
 <div class="slider">
-  <img id="slide" src="photo1.jpg">
+<img id="slide" src="photo1.jpg">
 </div>
 
-<br>
 <button onclick="openLetter()">Read My Secret Love Letter 💌</button>
 
+</div>
 </div>
 
 <div class="popup" id="letter">
 <h2>My Love 💕</h2>
 <p>
-From the day you came into my life,
-everything became beautiful.
-You are my biggest blessing and my forever happiness.
-I promise to stand beside you in every situation.
-Happy Birthday my queen ❤️
+From the day you came into my life,  
+everything changed beautifully.  
+
+You brought light into my darkest days,  
+hope into my worries,  
+and love into every heartbeat of mine ❤️.  
+
+I promise to stand beside you  
+in every smile, every tear, every success, and every challenge.  
+
+Today, tomorrow, and forever…  
+I choose you, Deepu 💖.  
+
+Happy Birthday my queen 👑❤️
 </p>
 <button onclick="closeLetter()">Close</button>
 </div>
 
-</div>
-
 <!-- AUDIO -->
-<audio id="bgMusic" loop>
-  <source src="birthday.mp3" type="audio/mpeg">
+<audio id="bgMusic">
+<source src="birthday.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
-// PASSWORD + MUSIC START
-function checkPassword() {
-  if(document.getElementById("pass").value === "Sara1527") {
-    document.getElementById("mainContent").style.display = "block";
-    
-    // Start Music
-    var music = document.getElementById("bgMusic");
-    music.play().catch(e=>console.log(e));
-
-    // Start Hearts
-    startHearts();
-  } else {
-    alert("Wrong Password 💔 Try Again");
-  }
+// PASSWORD + MUSIC
+function checkPassword(){
+if(document.getElementById("pass").value==="Sara1527"){
+document.getElementById("mainContent").style.display="block";
+document.getElementById("bgMusic").play();
+startHearts();
+}
+else{
+alert("Wrong Password 💔");
+}
 }
 
 // LOVE LETTER
-function openLetter(){ document.getElementById("letter").style.display="block"; }
-function closeLetter(){ document.getElementById("letter").style.display="none"; }
+function openLetter(){document.getElementById("letter").style.display="block";}
+function closeLetter(){document.getElementById("letter").style.display="none";}
 
-// COUNTDOWN
-var countDate = new Date("Feb 27, 2026 00:00:00").getTime();
+// COUNTDOWN WITH SPECIAL MESSAGE
+var countDate=new Date("Feb 27, 2026 00:00:00").getTime();
+
 setInterval(function(){
-  var now = new Date().getTime();
-  var gap = countDate - now;
+var now=new Date().getTime();
+var gap=countDate-now;
 
-  if(gap < 0){
-    document.getElementById("countdown").innerHTML="Happy Birthday Deepu ❤️";
-    launchFireworks();
-    return;
-  }
+if(gap<0){
+document.getElementById("countdown").innerHTML=
+"🎉 It's Your Special Day Deepu ❤️🎂";
+launchFireworks();
+return;
+}
 
-  var d = Math.floor(gap / (1000*60*60*24));
-  var h = Math.floor((gap%(1000*60*60*24))/(1000*60*60));
-  var m = Math.floor((gap%(1000*60*60))/(1000*60));
-  var s = Math.floor((gap%(1000*60))/1000);
+var d=Math.floor(gap/(1000*60*60*24));
+var h=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+var m=Math.floor((gap%(1000*60*60))/(1000*60));
+var s=Math.floor((gap%(1000*60))/1000);
 
-  document.getElementById("countdown").innerHTML =
-  d+"d "+h+"h "+m+"m "+s+"s";
+document.getElementById("countdown").innerHTML=
+"Countdown to your big day 💖<br>"+
+d+"d "+h+"h "+m+"m "+s+"s";
 
 },1000);
 
-// PHOTO SLIDER
-var images = ["photo1.jpg","photo2.jpg","photo3.jpg"];
+// SLIDER
+var images=["photo1.jpg","photo2.jpg","photo3.jpg"];
 var i=0;
 setInterval(function(){
-  i = (i+1)%images.length;
-  document.getElementById("slide").src = images[i];
+i=(i+1)%images.length;
+document.getElementById("slide").src=images[i];
 },3000);
 
-// HEARTS START FUNCTION
+// HEARTS
 function startHearts(){
-  setInterval(function(){
-    var heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💖";
-    heart.style.left=Math.random()*100+"vw";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),6000);
-  },500);
+setInterval(function(){
+var heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
 }
 
 // FIREWORKS
 function launchFireworks(){
-  for(let i=0;i<20;i++){
-    let fw=document.createElement("div");
-    fw.className="firework";
-    fw.innerHTML="✨";
-    fw.style.left=Math.random()*100+"vw";
-    fw.style.top=Math.random()*100+"vh";
-    document.body.appendChild(fw);
-    setTimeout(()=>fw.remove(),1000);
-  }
+for(let i=0;i<20;i++){
+let fw=document.createElement("div");
+fw.className="firework";
+fw.innerHTML="✨";
+fw.style.left=Math.random()*100+"vw";
+fw.style.top=Math.random()*100+"vh";
+document.body.appendChild(fw);
+setTimeout(()=>fw.remove(),1000);
+}
 }
 
 </script>

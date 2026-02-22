@@ -45,8 +45,10 @@ button:hover{
 #mainContent{display:none;margin-top:20px;}
 
 #countdown{
-  font-size:22px;
-  margin:15px;
+  font-size:26px;
+  font-weight:bold;
+  text-shadow:0 0 15px pink;
+  margin:20px 0;
 }
 
 .slider img{
@@ -123,6 +125,7 @@ Every day with you is a blessing 😍.
 </div>
 </div>
 
+<!-- POPUP (UNCHANGED) -->
 <div class="popup" id="letter">
 <h2>My Love 💕</h2>
 <p>
@@ -167,7 +170,7 @@ alert("Wrong Password 💔");
 function openLetter(){document.getElementById("letter").style.display="block";}
 function closeLetter(){document.getElementById("letter").style.display="none";}
 
-// COUNTDOWN WITH SPECIAL MESSAGE
+// COUNTDOWN (NO WORD "COUNTDOWN")
 var countDate=new Date("Feb 27, 2026 00:00:00").getTime();
 
 setInterval(function(){
@@ -187,8 +190,7 @@ var m=Math.floor((gap%(1000*60*60))/(1000*60));
 var s=Math.floor((gap%(1000*60))/1000);
 
 document.getElementById("countdown").innerHTML=
-"Countdown to your big day 💖<br>"+
-d+"d "+h+"h "+m+"m "+s+"s";
+"Only "+d+" Days "+h+" Hours "+m+" Minutes "+s+" Seconds left to celebrate YOU ❤️";
 
 },1000);
 

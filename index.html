@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Deepu ❤️</title>
+<title>Happy Birthday ❤️</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -22,16 +22,6 @@ body{
   padding-top:80px;
 }
 
-/* Smooth fade-in */
-.fade-in{
-  animation:fadeIn 1.5s ease forwards;
-}
-
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
 input{
   padding:10px;
   border-radius:8px;
@@ -46,12 +36,10 @@ button{
   color:white;
   cursor:pointer;
   margin-top:15px;
-  transition:0.3s;
 }
 
 button:hover{
   background:#ff1e4d;
-  transform:scale(1.05);
 }
 
 #mainContent{display:none;margin-top:20px;}
@@ -59,13 +47,8 @@ button:hover{
 #countdown{
   font-size:26px;
   font-weight:bold;
+  text-shadow:0 0 15px pink;
   margin:20px 0;
-  animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-  from{text-shadow:0 0 10px pink;}
-  to{text-shadow:0 0 25px red;}
 }
 
 .slider img{
@@ -124,7 +107,7 @@ button:hover{
 
 <div id="mainContent">
 
-<h1 id="typing"></h1>
+<h1>Happy Birthday Deepu ❤️</h1>
 
 <h2 id="countdown"></h2>
 
@@ -142,7 +125,7 @@ Every day with you is a blessing 😍.
 </div>
 </div>
 
-<!-- POPUP -->
+<!-- POPUP (UNCHANGED) -->
 <div class="popup" id="letter">
 <h2>My Love 💕</h2>
 <p>
@@ -164,6 +147,7 @@ Happy Birthday my queen 👑❤️
 <button onclick="closeLetter()">Close</button>
 </div>
 
+<!-- AUDIO -->
 <audio id="bgMusic">
 <source src="birthday.mp3" type="audio/mpeg">
 </audio>
@@ -173,42 +157,20 @@ Happy Birthday my queen 👑❤️
 // PASSWORD + MUSIC
 function checkPassword(){
 if(document.getElementById("pass").value==="Sara1527"){
-
-var content=document.getElementById("mainContent");
-content.style.display="block";
-content.classList.add("fade-in");
-
+document.getElementById("mainContent").style.display="block";
 document.getElementById("bgMusic").play();
 startHearts();
-typeEffect();
-
 }
 else{
 alert("Wrong Password 💔 Try Again");
 }
 }
 
-// TYPEWRITER EFFECT
-function typeEffect(){
-var text="Happy Birthday Deepu ❤️";
-var i=0;
-var speed=80;
-document.getElementById("typing").innerHTML="";
-function typing(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,speed);
-}
-}
-typing();
-}
-
 // LOVE LETTER
 function openLetter(){document.getElementById("letter").style.display="block";}
 function closeLetter(){document.getElementById("letter").style.display="none";}
 
-// COUNTDOWN
+// COUNTDOWN (NO WORD "COUNTDOWN")
 var countDate=new Date("Feb 27, 2026 00:00:00").getTime();
 
 setInterval(function(){
